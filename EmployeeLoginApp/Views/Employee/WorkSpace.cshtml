@@ -1,0 +1,16 @@
+﻿@model MainViewModels
+<link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+<link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+@{
+    ViewData["Title"] = "WorkSpace";
+}
+
+<title>WorkSpace</title>
+<h1><label>WorkSpace</label></h1>
+<h4>Welcome: @Model.employee.Name</h4>
+<a class="btn btn-primary" asp-action="Logout" asp-route-id="@Model.Login.UserID" style="margin-left:80%">
+    <i class="glyphicon glyphicon-log-out"></i>  LogOut</a>
+<hr />
+
+
+

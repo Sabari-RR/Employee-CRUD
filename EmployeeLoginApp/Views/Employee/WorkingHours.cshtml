@@ -1,0 +1,39 @@
+﻿
+@model MainViewModels
+<link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+<link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+@{
+    ViewData["Title"] = "WorkingHours";
+}
+<title>Working Hours</title>
+<h2>WorkingHours</h2>
+<hr/><a class="btn btn-primary" asp-action="Index"><i class="glyphicon glyphicon-backward"></i> Back To Main Page</a>
+<table class="table table-bordered table-striped table-condensed">
+    <thead>
+        <tr>
+            <th>EmployeeID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Hours Worked</th>
+        </tr>
+    </thead>
+    <tbody>
+        @for (int i = 0; i < Model.emplist.Count(); i++)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => Model.emplist[i].EmployeeId)</td>
+                <td>@Html.DisplayFor(modelItem => Model.emplist[i].Name)</td>
+                <td>@Html.DisplayFor(modelItem => Model.emplist[i].Email)</td>
+                @if (Model.loginlist.Count() > 0)
+                {
+                @for (int j = i; j <= i; j++)
+                {
+                    <td>@Html.DisplayFor(modelItem => Model.loginlist[j].TotalHours)</td>
+                }
+                }
+            </tr>
+        }
+
+
+    </tbody>
+</table>

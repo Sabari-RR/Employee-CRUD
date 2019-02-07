@@ -1,0 +1,63 @@
+﻿@model Employee
+@{
+    ViewData["Title"] = "Create";
+}
+<link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+<link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+<title>Add Employee</title>
+
+<div class="modal-body">
+    <h3>Create Employee</h3>
+    <hr />
+    <form asp-action="Create">
+        <div asp-validation-summary="ModelOnly" class="text-danger" style="color:red"></div>
+        <div class="row">
+            <div class="col-md-4">
+                <label asp-for="Name">Name</label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <label asp-for="Email">Email</label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <label asp-for="EmployeeId">EmployeeId</label>
+                <input asp-for="EmployeeId" class="form-control" />
+                <span asp-validation-for="EmployeeId" class="text-danger"></span>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <label asp-for="MobileNo">Mobile-Number</label>
+                <input asp-for="MobileNo" class="form-control" />
+                <span asp-validation-for="MobileNo" class="text-danger"></span>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <label asp-for="Role">Employee Designation</label>
+                <input asp-for="Role" class="form-control" />
+                <span asp-validation-for="Role" class="text-danger"></span>
+            </div>
+        </div><hr />
+        <div class="row">
+            <div class="col-md-4" style="text-align:right;">
+                <input type="submit" value="Save" class="btn btn-primary" />
+                <input type="reset" value="Cancel" class="btn btn-default" />
+            </div>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

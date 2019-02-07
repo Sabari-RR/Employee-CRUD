@@ -1,0 +1,63 @@
+﻿@model IEnumerable<Employee>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+<link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+<title>Home Page</title>
+<div class="top-buffer"></div>
+<div class="panel panel-primary">
+    <div class="panel-heading panel-head">Employee </div>
+    <div class="panel-body">
+        <div class="btn-group">
+            <a id="createEditEmployee" asp-action="Create" class="btn btn-primary" style="margin-right:20px;">
+                <i class="glyphicon glyphicon-plus"></i>Add Employee
+            </a>
+            <a id="ListEmployee" asp-action="GetWorkingHours" class="btn btn-warning">
+                <i class="glyphicon glyphicon-calendar"></i> Employee Working Hours
+            </a>
+        </div>
+        @*<a asp-action="Login" class="btn btn-default"><i class="glyphicon glyphicon-lock"></i> LOGIN</a>*@
+        <div class="top-buffer"></div>
+        <table class="table table-bordered table-striped table-condensed">
+            <thead>
+                <tr>
+                    <th>EmployeeID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>MobileNumber</th>
+                    <th>Role</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var items in Model)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(modelItem => items.EmployeeId)</td>
+                        <td>@Html.DisplayFor(modelItem => items.Name)</td>
+                        <td>@Html.DisplayFor(modelItem => items.Email)</td>
+                        <td>@Html.DisplayFor(modelItem => items.MobileNo)</td>
+                        <td>@Html.DisplayFor(modelItem => items.Role)</td>
+                        <td>
+                            <a id="editemployee" asp-action="Edit" asp-route-id="@items.EmployeeId"
+                               class="btn btn-info"><i class="glyphicon glyphicon-pencil"></i>Edit</a>
+                            <a id="delemployee" asp-action="Delete" onclick="return confirm('Are you sure to delete this Employee details?')" asp-route-id="@items.EmployeeId"
+                               class="btn btn-danger"><i class="glyphicon glyphicon-trash"></i>Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <hr />
+        <div id="SearchResult">
+
+        </div>
+    </div>
+</div>
+
+
+

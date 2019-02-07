@@ -1,0 +1,40 @@
+﻿@model LoginUser
+@{
+    ViewData["Title"] = "Login";
+}
+<link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+<link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+<div style="position: absolute; left: 30%;top:10%; width: 450px; height: 250px; border: 1px solid black">
+    <form asp-action="Login">
+        <div style="padding-top:20%;text-align:center">
+                <label asp-for="UserID">User-ID</label>
+                <input type="text" id="empid" asp-for="UserID" class="form-control"/>
+        </div><br />
+        <div>
+            <span class="alert-danger" asp-validation-for="UserID" style="color:red"></span>
+        </div>
+        <div class="row" style="text-align:center">
+            <input type="submit" value="Login" class="btn btn-primary"  onclick="return UserCheck()" asp-route-id="UserID"/>
+        </div>
+    </form>
+</div>
+   
+<script type="text/javascript">
+    function UserCheck() {
+        var txtdata = document.getElementById("empid").value;
+        if (txtdata != '') {
+            if (!isNaN(txtdata)) {
+                return true;
+            }
+            alert("User-Id should be a number");
+            return false;
+        }
+        else {
+            alert("User-id should be valid");
+            return false;
+        }
+    }
+
+
+</script>
+
